@@ -57,7 +57,7 @@ handle error conditions.
 
 ## File cache
 
-```javascript
+```js
 import {createFileCache} from 'kv-cache';
 
 const cache = createFileCache('/path/to/directory');
@@ -76,12 +76,11 @@ then asynchronously written to disk.
 
 When `invalidate` is called, it removes any related data in memory and then asynchronously
 remove the related file. Note: invalidating a missing key will not produce an error.
-```
 
 
 ## Mock cache
 
-```javascript
+```js
 import {createMockCache} from 'kv-cache';
 
 const cache = createMockCache();
