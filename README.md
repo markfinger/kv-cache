@@ -1,6 +1,6 @@
 # kv-cache
 
-A persistent key/value cache that persists to disk.
+A persistent key/value cache.
 
 
 ## Install
