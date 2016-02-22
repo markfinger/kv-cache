@@ -1,4 +1,4 @@
-import {assert} from '../utils/assert';
+import {assert} from './assert';
 import {generateMurmurHash} from '../utils';
 
 describe('utils', () => {

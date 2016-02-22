@@ -1,7 +1,7 @@
 import path from 'path';
 import rimraf from 'rimraf';
 import EventEmitter from 'events';
-import {assert} from '../utils/assert';
+import {assert} from './assert';
 import {createFileCache} from '../file-cache';
 import {createMockCache} from '../mock-cache';
 

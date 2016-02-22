@@ -1,4 +1,4 @@
-import {assert} from '../utils/assert';
+import {assert} from './assert';
 import {createMockCache} from '../mock-cache';
 
 describe('mock-cache', () => {

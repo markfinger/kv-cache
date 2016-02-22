@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import rimraf from 'rimraf';
 import mkdirp from 'mkdirp';
-import {assert} from '../utils/assert';
+import {assert} from './assert';
 import {createFileCache} from '../file-cache';
 import {generateMurmurHash} from '../utils';
 
