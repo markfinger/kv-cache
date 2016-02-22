@@ -1,6 +1,6 @@
 {
   "name": "kv-cache",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A persistent key/value cache",
   "main": "lib/index.js",
   "scripts": {
