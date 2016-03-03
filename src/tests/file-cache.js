@@ -141,5 +141,16 @@ describe('file-cache', () => {
         );
       });
     });
+    it('should invalidate malformed cache files that cause SyntaxErrors during reads', () => {
+      const cache = createFileCache(dirname);
+
+      fs.writeFileSync(TEST_KEY_FILENAME, '{');
+      fs.accessSync(TEST_KEY_FILENAME, fs.F_OK);
+
+      return cache.get('test').then(value => {
+        assert.isNull(value);
+        assert.throws(() => fs.accessSync(TEST_KEY_FILENAME, fs.F_OK));
+      });
+    });
   });
 });

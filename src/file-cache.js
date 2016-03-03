@@ -54,7 +54,18 @@ export function createFileCache(dirname, options={}) {
       .then(json => {
         cache[file] = json;
 
-        return JSON.parse(json);
+        // If a cache write is interrupted by a process exiting, we can end up
+        // with malformed cache files which require manual interventions to
+        // recover. As a workaround, we detect malformed JSON, invalidate the
+        // cache file, then resolve to `null` as though the file didn't exist
+        try {
+          return JSON.parse(json);
+        } catch(err) {
+          if (err instanceof SyntaxError) {
+            return invalidate(key);
+          }
+          return Promise.reject(err);
+        }
       })
       .catch(err => {
         if (err.code === 'ENOENT') {
@@ -132,7 +143,8 @@ export function createFileCache(dirname, options={}) {
 
         events.emit('error', err);
         return Promise.resolve(err);
-      });
+      })
+      .then(() => null);
   }
 
   return {
